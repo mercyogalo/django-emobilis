@@ -4,5 +4,6 @@ from . import views
 
 app_name="students"
 urlpatterns = [
-    path('', views.home, name="home")
+    path('', views.home, name="home"),
+    path('form/', views.form, name="form")
 ]
