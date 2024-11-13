@@ -5,26 +5,21 @@
 {% block body %}
  <h2>view page</h2>
 
- <table class=" table table-striped table-bordered">
-<tr>
-    <th>#</th>
-    <th>name</th>
-    <th>email</th>
-    <th>age</th>
-    <th>phone</th>
-    <th>image</th>
-<tr>
+
 
    
         {% for student in students   %}
-        <tr>
-        <td>{{student.id}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.email}}</td>
-        <td>{{student.age}}</td>
-        <td>{{student.phone}}</td>
-        <td>{{student.image}}</td>
-    </tr>
+        <div class="row g-0 bg-body-secondary position-relative mt-3 mb-3">
+            <div class="col-md-6 mb-md-0 p-md-4 ">
+              <img src="{{student.image.url}}" class="w-10" alt="...">
+            </div>
+            <div class="col-md-6 p-4 ps-md-0">
+              <h5 class="mt-0">{{student.name}}</h5>
+              <p>{{student.email}}</p>
+              <p>{{student.phone}}</p>
+              <p>{{student.age}}</p>
+            </div>
+          </div>
         {% endfor %}
    
 
