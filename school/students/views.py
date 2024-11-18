@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Students
+from . serializers import StudentSerializer
+from rest_framework import viewsets
 
 # Create your views here.
 def home(request):
@@ -22,3 +24,10 @@ def form(request):
 def formdata(request):
     students = Students.objects.all()
     return render(request, 'formdata.html', {'students': students})
+
+
+class StudentView(viewsets.ModelViewSet):
+    queryset=Students.objects.all()
+    serializer_class= StudentSerializer
+    
+    
