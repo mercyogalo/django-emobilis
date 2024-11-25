@@ -4,6 +4,7 @@ from . serializers import StudentSerializer
 from rest_framework import viewsets
 from django.http import HttpResponse
 from . credentials import MpesaAccessToken, MpesaPassword
+import requests
 
 # Create your views here.
 def home(request):
@@ -22,7 +23,7 @@ def students(request):
         request={    
    "BusinessShortCode": MpesaPassword.business_short_code,    
    "Password": MpesaPassword.decode_password,    
-   "Timestamp":MpesaPassword.lipa-time,    
+   "Timestamp":MpesaPassword.lipa_time,    
    "TransactionType": "CustomerPayBillOnline",    
    "Amount": amount,    
    "PartyA":phone,    
@@ -32,8 +33,9 @@ def students(request):
    "AccountReference":"Test",    
    "TransactionDesc":"Test"
 }
+        response= requests.post(api_url, json = request,headers = headers)
     
-    return HttpResponse(success)
+    return HttpResponse("success")
     
     
 

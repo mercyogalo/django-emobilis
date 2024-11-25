@@ -13,15 +13,15 @@ class MpesaCredentials:
     
 class MpesaAccessToken:
     r = requests.get (
-        MpesaCredential.api_url,
+        MpesaCredentials.api_url,
         auth=HTTPBasicAuth(MpesaCredentials.consumer_key, MpesaCredentials.consumer_secret)
     )
     mpesa_access_token = json.loads(r.text)['access_token']
     
     
 class MpesaPassword:
-    lipa_time = datetime.now().strftime()
-    business_short_code:'174379'
+    lipa_time = datetime.now().strftime('%Y%m%d%H%M%S')
+    business_short_code= '174379'
     Offsetvalue='0'  
     passkey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
     data_to_encode = business_short_code + passkey + lipa_time
